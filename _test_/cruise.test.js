@@ -23,3 +23,12 @@ describe ('Cruise ship constructor', () => {
         expect(ship.startPort).toBe("Dover")
     })
 });
+
+describe ('Methods for the cruise ship are below', () => {
+    it('makes the ship set sail', () => {
+        ship;
+        ship.setSail("Calais")
+        expect(ship.startPort).toBeFalsy()
+        expect(ship.destination).toBe('Calais')
+    })
+})
