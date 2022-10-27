@@ -1,0 +1,4 @@
+const Ship = require('./src/cruise');
+const Port = require('./src/port');
+const ship = new Ship('Theo');
+const port = new Port('Calais');
