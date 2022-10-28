@@ -18,6 +18,12 @@ describe('Creating a cruise ship', () => {
         const ship = new Ship(itinerary);
         expect(ship.currentPort).toEqual(port)
     })
+    it('adds the ship to port on instantiation', () => {
+        const dover = new Port('Dover')
+        const itinerary = new Itinerary([dover]);
+        const ship = new Ship(itinerary);
+        expect(dover.ships).toContain(ship);
+    })
 })
 
 describe('methods are below', () => {
@@ -29,6 +35,7 @@ describe('methods are below', () => {
         ship.setSail()
         expect(ship.currentPort).toBeFalsy()
         expect(ship.previousPort).toBe(dover);
+        expect(dover.ships).not.toContain(ship);
     })
     it('makes the ship dock at another port', () => {
         const dover = new Port('Dover');
@@ -38,6 +45,7 @@ describe('methods are below', () => {
         ship.setSail();
         ship.dock();
         expect(ship.currentPort).toBe(calais);
+        expect(calais.ships).toContain(ship);
     })
     it('can\'t sail further than its itinerary', () => {
         const dover = new Port('Dover');
