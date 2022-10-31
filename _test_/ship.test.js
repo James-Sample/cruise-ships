@@ -43,7 +43,9 @@ describe('methods are below', () => {
                 name: 'Calais',
                 ships: []
             } 
-            itinerary = new Itinerary([dover, calais]);
+            itinerary = {
+                ports: [dover, calais]
+            }
             ship = new Ship(itinerary);
         })
     it('makes the ship leave port', () => {
