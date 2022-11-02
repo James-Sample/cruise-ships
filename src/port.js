@@ -1,14 +1,51 @@
-class Port {
-    constructor(name) {
-        this.name = name;
-        this.ships = [];
+(function exportPort() {
+    function Port(name) {
+      this.name = name;
+      this.ships = [];
     }
-    addShip(ship) {
+  
+    Port.prototype = {
+      addShip(ship) {
         this.ships.push(ship);
+      },
+      removeShip(ship) {
+        this.ships = this.ships.filter(dockedShip => dockedShip !== ship);
+      },
+    };
+  
+    if (typeof module !== 'undefined' && module.exports) {
+      module.exports = Port;
+    } else {
+      window.Port = Port;
     }
-    removeShip(ship) {
-        this.ships.splice(this.ships.indexOf(ship));
-    }
-}
+  }());
 
-module.exports = Port;
+
+// ES6 format below (not working)
+
+//class Port {
+//    IIFE = (() => {
+//    constructor(name) {
+//        this.name = name;
+//        this.ships = [];
+//    }
+//    addShip(ship) {
+//        this.ships.push(ship);
+//    }
+//    removeShip(ship) {
+//        this.ships.splice(this.ships.indexOf(ship));
+//    }
+
+//    if (typeof module !== 'undefined' && module.exports) {
+//        module.esports = Port;
+//    } else {
+//        window.Port = Port;
+//    }
+
+//})();
+//}
+  
+
+//let myPortInstance = new Port();
+
+//module.exports = Port;
