@@ -6,25 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <title>Cruise Ship GUI</title>
 </head>
 <body>
     <div id="viewport">
-        <div id="ports">
-        </div>
+        <div id="ports"></div>
+        <div id="ship"></div>
+        <button id="sailbutton">Set Sail</button>
     </div>
     <script src="src/controller.js"></script>
     <script src="src/port.js"></script>
     <script src="src/Itinerary.js"> </script>
     <script>
-        const controller = new Controller();
+        
         const itinerary = new Itinerary([
         new Port('Dover'),
         new Port('Calais'),
         new Port('Jersey'),
         new Port('Southampton')
     ])
+    const controller = new Controller();
     controller.renderPorts(itinerary.ports)
+    const ship = new Ship(itinerary)
+    controller.renderShip(ship)
     </script>
 </body>
 </html>
